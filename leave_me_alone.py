@@ -9,16 +9,14 @@ class LeaveMeAlone:
         self.channel = channel
 
     # Craft and return the entire message payload as a dictionary.
-    def get_default_payload(self, name):
+    def get_default_payload(self, text):
         # Create a constant that contains the default text for the message
         blocks = [
             {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": (
-                        "Hey! *"+name+"*, I've updated your leave status."
-                    ),
+                    "text": text,
                 },
             }
         ]
@@ -50,7 +48,7 @@ class LeaveMeAlone:
             "blocks": blocks,
         }
 
-    def get_attachments_payload(self, text, color):
+    def get_attachments_payload(self, text, color, heading="Message"):
         return [
 		    {
                 "color": color,
@@ -59,7 +57,7 @@ class LeaveMeAlone:
 			    		"type": "section",
 			    		"text": {
 			    			"type": "mrkdwn",
-			    			"text": "*Message*"
+			    			"text": "*"+heading+"*"
 			    		}
 			    	},
 			    	{
